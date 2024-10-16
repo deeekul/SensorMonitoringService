@@ -83,8 +83,8 @@ public class MeasurementService {
 
     private List<Measurement> findMeasurementsBySensorNameOrThrowException(String sensorName) {
         return measurementRepository.findMeasurementsBySensorName(sensorName)
-                .orElseThrow(() -> new SensorNotFoundException("Сенсора с именем = "
-                        + sensorName + " не найдено!"
+                .orElseThrow(() -> new SensorNotFoundException("Сенсор с именем = "
+                        + sensorName + " не найден!"
                 ));
     }
 }
