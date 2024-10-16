@@ -3,13 +3,9 @@ package ru.vsu.cs.dto.request;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import ru.vsu.cs.entities.Sensor;
+import lombok.Getter;
 
-import java.time.LocalDateTime;
-
-public record MeasurementCreateRequest(
-
-        Long id,
+public record MeasurementRequest(
 
         @Min(-100)
         @Max(100)
@@ -17,12 +13,9 @@ public record MeasurementCreateRequest(
         Double value,
 
         @NotNull
-        LocalDateTime measurementDateTime,
-
-        @NotNull
         Boolean raining,
 
         @NotNull
-        Sensor sensor
+        SensorRequest sensor
 ) {
 }

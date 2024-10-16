@@ -32,6 +32,13 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // Mapping
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.0'
+    implementation 'org.mapstruct:mapstruct:1.6.0'
+
+    // Logging
+    implementation 'log4j:log4j:1.2.16'
+
     // Validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 

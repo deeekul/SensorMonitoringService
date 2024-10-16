@@ -1,9 +1,11 @@
-package ru.vsu.cs.entities;
+package ru.vsu.cs.entitiy;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,18 +13,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
+import java.time.LocalDateTime;
+
 @Getter
+@Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "measurements")
 @Entity
-@Table(name = "sensors")
-public class Sensor {
+public class Measurement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private Double value;
+
+    private Boolean raining;
+
+    private LocalDateTime measurementDateTime;
+
+    @JoinColumn(name = "sensor", referencedColumnName = "name")
+    @ManyToOne
+    private Sensor sensor;
 }
