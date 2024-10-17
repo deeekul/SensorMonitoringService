@@ -19,7 +19,7 @@ import static ru.vsu.cs.util.ErrorsUtil.returnErrorsToClient;
 @RequiredArgsConstructor
 @RequestMapping("/api/measurements")
 @RestController
-public class MeasurementController {
+public class MeasurementController implements MeasurementApi {
 
     private final MeasurementService measurementService;
 

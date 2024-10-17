@@ -5,17 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.vsu.cs.api.SensorApi;
 import ru.vsu.cs.dto.request.SensorRequest;
 import ru.vsu.cs.dto.response.SensorResponse;
+import ru.vsu.cs.exception.MeasurementNotFoundException;
+import ru.vsu.cs.exception.SensorNotFoundException;
 import ru.vsu.cs.service.SensorService;
 import ru.vsu.cs.util.ErrorResponse;
 import ru.vsu.cs.util.SensorValidator;
@@ -27,7 +22,7 @@ import static ru.vsu.cs.util.ErrorsUtil.returnErrorsToClient;
 @RequiredArgsConstructor
 @RequestMapping("/api/sensors")
 @RestController
-public class SensorController {
+public class SensorController implements SensorApi {
 
     private final SensorService sensorService;
 

@@ -6,4 +6,4 @@ databaseChangeLog:
   - include:
       file: db/changelog/v-0.1.0/data/20241014_data_sensors.sql
   - include:
-        file: db/changelog/v-0.1.0/data/20241014_data_measurements.sql
+      file: db/changelog/v-0.1.0/data/20241014_data_measurements.sql

@@ -12,7 +12,7 @@ public record MeasurementResponse(
         @Schema(description = "Температура воздуха", example = "19")
         Double value,
 
-        @Schema(description = "Время измерения, сделанного сенсором", example = "2024-10-16T20:59:51.226591")
+        @Schema(description = "Время измерения, сделанного сенсором", example = "2024-10-05 14:30:00")
         LocalDateTime measurementDateTime,
 
         @Schema(description = "Наличие дождя во время измерения (true - дождь идет, false - дождя нет)",

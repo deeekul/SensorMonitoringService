@@ -7,7 +7,6 @@ import ru.vsu.cs.dto.request.MeasurementRequest;
 import ru.vsu.cs.dto.response.MeasurementResponse;
 import ru.vsu.cs.entitiy.Measurement;
 import ru.vsu.cs.exception.MeasurementNotFoundException;
-import ru.vsu.cs.exception.SensorNotFoundException;
 import ru.vsu.cs.mapper.MeasurementMapper;
 import ru.vsu.cs.repository.MeasurementRepository;
 import ru.vsu.cs.repository.SensorRepository;
@@ -25,6 +24,8 @@ public class MeasurementService {
 
     private final MeasurementMapper measurementMapper;
 
+    private final SensorService sensorService;
+
     public List<MeasurementResponse> getAllMeasurements() {
         log.info("Getting all measurements");
         var measurements =  measurementRepository.findAll();
@@ -35,8 +36,10 @@ public class MeasurementService {
     }
 
     public List<MeasurementResponse> getAllMeasurementsBySensorName(String sensorName) {
-        log.info("Getting all measurements with sensorName={}", sensorName);
-        var measurements = findMeasurementsBySensorNameOrThrowException(sensorName);
+        var sensor = sensorService.getSensorByName(sensorName);
+
+        log.info("Getting all measurements for an existing sensor with name={}", sensorName);
+        var measurements = measurementRepository.findMeasurementsBySensorName(sensor.name());
 
         return measurements.stream()
                 .map(measurementMapper::map)
@@ -78,13 +81,6 @@ public class MeasurementService {
         return measurementRepository.findById(measurementId)
                 .orElseThrow(() -> new MeasurementNotFoundException("Измерение с id = "
                         + measurementId + " не найдено!"
-                ));
-    }
-
-    private List<Measurement> findMeasurementsBySensorNameOrThrowException(String sensorName) {
-        return measurementRepository.findMeasurementsBySensorName(sensorName)
-                .orElseThrow(() -> new SensorNotFoundException("Сенсор с именем = "
-                        + sensorName + " не найден!"
                 ));
     }
 }

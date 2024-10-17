@@ -6,10 +6,10 @@ import lombok.Builder;
 @Builder
 public record ErrorResponse(
 
-        @Schema(description = "Сообщение ошибки", example = "")
+        @Schema(description = "Сообщение ошибки")
         String errorMessage,
 
-        @Schema(description = "Код ошибки", example = "400")
+        @Schema(description = "Код ошибки")
         Integer errorCode
 ) {
 }

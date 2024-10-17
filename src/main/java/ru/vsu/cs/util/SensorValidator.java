@@ -6,10 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.vsu.cs.dto.request.SensorRequest;
 import ru.vsu.cs.entitiy.Sensor;
-import ru.vsu.cs.exception.SensorNotFoundException;
-import ru.vsu.cs.mapper.SensorMapper;
 import ru.vsu.cs.repository.SensorRepository;
-import ru.vsu.cs.service.SensorService;
 
 @RequiredArgsConstructor
 @Component

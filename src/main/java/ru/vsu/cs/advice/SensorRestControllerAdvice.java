@@ -13,11 +13,11 @@ import ru.vsu.cs.util.ErrorResponse;
 public class SensorRestControllerAdvice {
 
     @ExceptionHandler(SensorNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleException(SensorNotFoundException customException) {
+    public ResponseEntity<ErrorResponse> handleException(SensorNotFoundException ex) {
         log.error("The requested sensor is not found!");
         return new ResponseEntity<>(ErrorResponse.builder()
-                .errorMessage(customException.getMessage())
-                .errorCode(customException.getStatus().value())
+                .errorMessage(ex.getMessage())
+                .errorCode(ex.getStatus().value())
                 .build(),
                 HttpStatus.NOT_FOUND);
     }

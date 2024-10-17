@@ -81,7 +81,7 @@ public class SensorService {
     private Sensor findSensorByNameOrThrowException(String sensorName) {
         return sensorRepository.findByName(sensorName)
                 .orElseThrow(
-                        () -> new SensorNotFoundException("Сенсор с name=" +
+                        () -> new SensorNotFoundException("Сенсор с name = " +
                                 sensorName + " не найден!", HttpStatus.NOT_FOUND));
     }
 }

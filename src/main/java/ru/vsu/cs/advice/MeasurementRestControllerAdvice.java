@@ -13,11 +13,11 @@ import ru.vsu.cs.util.ErrorResponse;
 public class MeasurementRestControllerAdvice {
 
     @ExceptionHandler(MeasurementNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleException(MeasurementNotFoundException customException) {
+    public ResponseEntity<ErrorResponse> handleException(MeasurementNotFoundException ex) {
         log.error("The requested measurement is not found!");
         return new ResponseEntity<>(ErrorResponse.builder()
-                .errorMessage(customException.getMessage())
-                .errorCode(customException.getStatus().value())
+                .errorMessage(ex.getMessage())
+                .errorCode(ex.getStatus().value())
                 .build(),
                 HttpStatus.NOT_FOUND);
     }
