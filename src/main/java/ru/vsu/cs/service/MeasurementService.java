@@ -67,14 +67,13 @@ public class MeasurementService {
         var measurement = Measurement.builder()
                         .value(measurementRequest.value())
                         .raining(measurementRequest.raining())
-                        .measurementDateTime(LocalDateTime.now())
                         .sensor(sensor)
                         .build();
 
-        measurementRepository.save(measurement);
+        var savedMeasurement = measurementRepository.save(measurement);
 
         log.info("Measurement with id={} was added!", measurement.getId());
-        return measurementMapper.map(measurement);
+        return measurementMapper.map(savedMeasurement);
     }
 
     private Measurement findMeasurementByIdOrThrowException(Long measurementId) {

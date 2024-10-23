@@ -87,7 +87,6 @@ public interface MeasurementApi {
     ResponseEntity<MeasurementResponse> getMeasurementById(
             @Parameter(description = "Идентификатор измерения") Long measurementId);
 
-
     @ApiResponse(
             responseCode = "200",
             description = "Успешное получение количества дождливых дней",

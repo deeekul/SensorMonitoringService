@@ -67,7 +67,9 @@ public class SensorService {
     }
 
     public void deleteSensorById(Long sensorId) {
-        sensorRepository.deleteById(sensorId);
+        var sensor = findSensorByIdOrThrowException(sensorId);
+
+        sensorRepository.delete(sensor);
         log.info("Sensor with id={} was deleted!", sensorId);
     }
 
