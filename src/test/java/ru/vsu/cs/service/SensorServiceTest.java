@@ -251,7 +251,7 @@ class SensorServiceTest {
     }
 
     @Test
-    void updateSensorById_ShouldThrowSensorNotFoundException_WhenSensorDoesNotExist() {
+    void updateSensorById_shouldThrowSensorNotFoundException_WhenSensorDoesNotExist() {
 
         // given
         final Long id = 5L;

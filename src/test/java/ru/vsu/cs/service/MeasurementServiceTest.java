@@ -68,7 +68,6 @@ class MeasurementServiceTest {
                         new Sensor(2L, "sensor2")
                 )
         );
-
         var mappedMeasurements = List.of(
                 new MeasurementResponse(
                         1L,
@@ -245,7 +244,6 @@ class MeasurementServiceTest {
                 now,
                 new Sensor(1L, "ESM-10 Danfoss")
         );
-
         var mappedMeasurement = new MeasurementResponse(
                 id,
                 10.0,
@@ -357,7 +355,6 @@ class MeasurementServiceTest {
                 true,
                 new SensorRequest(sensorName)
         );
-
         var now = LocalDateTime.now();
 
         var measurement = Measurement.builder()
@@ -365,12 +362,11 @@ class MeasurementServiceTest {
                 .raining(measurementRequest.raining())
                 .sensor(sensor)
                 .build();
-
         var savedMeasurement = new Measurement(
                 1L,
                 10.0,
                 true,
-               now,
+                now,
                 sensor
         );
         var mappedMeasurement = new MeasurementResponse(
