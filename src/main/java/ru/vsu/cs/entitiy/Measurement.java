@@ -9,15 +9,18 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Builder
+@EqualsAndHashCode(exclude = "id")
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "measurements")
@@ -32,6 +35,7 @@ public class Measurement {
 
     private Boolean raining;
 
+    @CreationTimestamp(source = SourceType.DB)
     private LocalDateTime measurementDateTime;
 
     @JoinColumn(name = "sensor", referencedColumnName = "name")

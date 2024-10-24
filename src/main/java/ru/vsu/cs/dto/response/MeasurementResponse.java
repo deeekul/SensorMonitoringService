@@ -12,14 +12,14 @@ public record MeasurementResponse(
         @Schema(description = "Температура воздуха", example = "19")
         Double value,
 
-        @Schema(description = "Время измерения, сделанного сенсором", example = "2024-10-05 14:30:00")
-        LocalDateTime measurementDateTime,
-
         @Schema(description = "Наличие дождя во время измерения (true - дождь идет, false - дождя нет)",
                 example = "true")
         Boolean raining,
 
-        @Schema(description = "Название сенсора", example = "ESM-10 Danfoss")
+        @Schema(description = "Время измерения, сделанного сенсором", example = "2024-10-05 14:30:00")
+        LocalDateTime measurementDateTime,
+
+        @Schema(description = "Сенсор, которым производилось измерение")
         SensorResponse sensor
 ) {
 }

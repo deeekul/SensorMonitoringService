@@ -72,7 +72,7 @@ public interface SensorApi {
             @ApiResponse(
                     responseCode = "400",
                     description = "В теле запроса указаны недопустимые поля " +
-                            "или отсутствуют обязательные для заполнения",
+                                    "или отсутствуют обязательные для заполнения",
                     content = {
                             @Content(
                                     mediaType = "application/json",

@@ -41,7 +41,8 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.6.0'
 
     // Logging
-    implementation 'log4j:log4j:1.2.16'
+    implementation 'org.apache.logging.log4j:log4j-core'
+    implementation 'org.apache.logging.log4j:log4j-api'
 
     // Validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -50,6 +51,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+tasks {
+
+    test {
+        useJUnitPlatform()
+    }
 }

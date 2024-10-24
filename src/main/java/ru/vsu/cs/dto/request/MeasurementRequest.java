@@ -18,7 +18,7 @@ public record MeasurementRequest(
         @NotNull
         Boolean raining,
 
-        @Schema(description = "Название сенсора", example = "ESM-10 Danfoss")
+        @Schema(description = "Сенсор, которым производилось измерение")
         @NotNull
         SensorRequest sensor
 ) {
