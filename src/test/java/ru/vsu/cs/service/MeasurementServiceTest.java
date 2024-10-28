@@ -49,7 +49,6 @@ class MeasurementServiceTest {
 
     @Test
     void getAllMeasurements_shouldReturnListOfMeasurementResponses_whenCalled() {
-
         // given
         var now = LocalDateTime.now();
         var foundMeasurements = List.of(
@@ -126,7 +125,6 @@ class MeasurementServiceTest {
 
     @Test
     void getAllMeasurementsBySensorName_shouldReturnListOfMeasurementResponses_whenSensorExists() {
-
         // given
         final Long id = 1L;
         var sensorName = "ESM-10 Danfoss";
@@ -215,7 +213,6 @@ class MeasurementServiceTest {
 
     @Test
     void getAllMeasurementsBySensorName_shouldThrowSensorNotFoundException_whenSensorDoesNotExist() {
-
         // given
         final String sensorName = "Non-existent sensor";
 
@@ -232,7 +229,6 @@ class MeasurementServiceTest {
 
     @Test
     void getMeasurementById_shouldReturnMeasurementResponse_whenMeasurementExists() {
-
         // given
         final Long id = 1L;
         var now = LocalDateTime.now();
@@ -281,7 +277,6 @@ class MeasurementServiceTest {
 
     @Test
     void getMeasurementById_shouldThrowMeasurementNotFoundException_whenMeasurementDoesNotExist() {
-
         // given
         final Long id = 1L;
         var emptyEntity = Optional.empty();
@@ -300,8 +295,7 @@ class MeasurementServiceTest {
     }
 
     @Test
-    void getRainyDaysCount_shouldReturnRainyDaysCount_whenCalled() {
-
+    void getRainyMeasurementCount_shouldReturnRainyDaysCount_whenCalled() {
         // given
         var now = LocalDateTime.now();
         var foundMeasurements = List.of(
@@ -333,7 +327,7 @@ class MeasurementServiceTest {
                 .findAll();
 
         // when
-        var result = measurementService.getRainyDaysCount();
+        var result = measurementService.getRainyMeasurementCount();
 
         // then
         assertThat(result).isEqualTo(2L);
@@ -344,7 +338,6 @@ class MeasurementServiceTest {
 
     @Test
     void addMeasurement_shouldReturnMeasurementResponse_whenCalled() {
-
         // given
         final Long sensorId = 1L;
         var sensorName = "ESM-10 Danfoss";

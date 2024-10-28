@@ -2,6 +2,7 @@ package ru.vsu.cs.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import ru.vsu.cs.dto.request.MeasurementRequest;
 import ru.vsu.cs.dto.response.MeasurementResponse;
@@ -53,7 +54,7 @@ public class MeasurementService {
         return measurementMapper.map(measurement);
     }
 
-    public Long getRainyDaysCount() {
+    public Long getRainyMeasurementCount() {
         return measurementRepository.findAll().stream()
                 .filter((Measurement::getRaining))
                 .count();
@@ -78,8 +79,9 @@ public class MeasurementService {
 
     private Measurement findMeasurementByIdOrThrowException(Long measurementId) {
         return measurementRepository.findById(measurementId)
-                .orElseThrow(() -> new MeasurementNotFoundException("Измерение с id = "
-                        + measurementId + " не найдено!"
-                ));
+                .orElseThrow(
+                        () -> new MeasurementNotFoundException("Измерение с id = " + measurementId + " не найдено!",
+                                HttpStatus.NOT_FOUND)
+                );
     }
 }

@@ -41,9 +41,9 @@ public class MeasurementController implements MeasurementApi {
         return ok(measurementService.getMeasurementById(measurementId));
     }
 
-    @GetMapping("/rainyDaysCount")
-    public ResponseEntity<Long> getRainyDaysCount() {
-        return ok(measurementService.getRainyDaysCount());
+    @GetMapping("/rainyMeasurementCount")
+    public ResponseEntity<Long> getRainyMeasurementCount() {
+        return ok(measurementService.getRainyMeasurementCount());
     }
 
     @PostMapping("/add")

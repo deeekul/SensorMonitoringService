@@ -76,14 +76,16 @@ public class SensorService {
     private Sensor findSensorByIdOrThrowException(Long sensorId) {
         return sensorRepository.findById(sensorId)
                 .orElseThrow(
-                        () -> new SensorNotFoundException("Сенсор с id = " +
-                                sensorId + " не найден!", HttpStatus.NOT_FOUND));
+                        () -> new SensorNotFoundException("Сенсор с id = " + sensorId + " не найден!",
+                                HttpStatus.NOT_FOUND)
+                );
     }
 
     private Sensor findSensorByNameOrThrowException(String sensorName) {
         return sensorRepository.findByName(sensorName)
                 .orElseThrow(
-                        () -> new SensorNotFoundException("Сенсор с name = " +
-                                sensorName + " не найден!", HttpStatus.NOT_FOUND));
+                        () -> new SensorNotFoundException("Сенсор с name = " + sensorName + " не найден!",
+                                HttpStatus.NOT_FOUND)
+                );
     }
 }

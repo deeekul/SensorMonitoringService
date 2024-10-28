@@ -97,8 +97,8 @@ public interface MeasurementApi {
                     )
             }
     )
-    @Operation(summary = "Получить количество дождливых дней")
-    ResponseEntity<Long> getRainyDaysCount();
+    @Operation(summary = "Получить количество измерений в дождливую погоду")
+    ResponseEntity<Long> getRainyMeasurementCount();
 
     @ApiResponses(value = {
             @ApiResponse(
