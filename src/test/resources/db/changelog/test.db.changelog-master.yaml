@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/create_table_sensors.sql
+  - include:
+      file: db/changelog/changeset/create_table_measurements.sql
