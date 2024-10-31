@@ -16,10 +16,14 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class SensorServiceTest {
+class  SensorServiceTest {
 
     @Mock
     private SensorRepository sensorRepository;
@@ -32,7 +36,6 @@ class SensorServiceTest {
 
     @Test
     void getAllSensors_shouldReturnListOfSensorResponse_whenCalled() {
-
         // given
         var foundSensors = List.of(
                 new Sensor(1L, "sensor1"),
@@ -79,7 +82,6 @@ class SensorServiceTest {
 
     @Test
     void getSensorById_shouldReturnSensorResponse_whenSensorExists() {
-
         // given
         final Long id = 1L;
         var foundSensor = new Sensor(id, "sensor1");
@@ -107,7 +109,6 @@ class SensorServiceTest {
 
     @Test
     void getSensorById_shouldThrowSensorNotFoundException_whenSensorDoesNotExist() {
-
         // given
         final Long id = 1L;
         var emptyEntity = Optional.empty();
@@ -124,7 +125,6 @@ class SensorServiceTest {
 
     @Test
     void getSensorByName_shouldReturnSensorResponse_whenSensorExists() {
-
         // given
         final Long id = 1L;
         final String sensorName = "ESM-10 Danfoss";
@@ -155,7 +155,6 @@ class SensorServiceTest {
 
     @Test
     void getSensorByName_shouldThrowSensorNotFoundException_whenSensorDoesNotExist() {
-
         // given
         final String sensorName = "ESM-10 Danfoss";
         var emptyEntity = Optional.empty();
@@ -175,7 +174,6 @@ class SensorServiceTest {
 
     @Test
     void registerSensor_shouldReturnSensorResponse_whenInputIsValid() {
-
         // given
         final String sensorName = "ESM-10 Danfoss";
 
@@ -219,7 +217,6 @@ class SensorServiceTest {
 
     @Test
     void updateSensorById_shouldUpdateAndReturnSensorResponse_whenSensorExists() {
-
         // given
         final Long id = 1L;
         final String newSensorName = "TSensorEnc";
@@ -252,7 +249,6 @@ class SensorServiceTest {
 
     @Test
     void updateSensorById_shouldThrowSensorNotFoundException_WhenSensorDoesNotExist() {
-
         // given
         final Long id = 5L;
         var sensorRequest = new SensorRequest("TSensorEnc");
@@ -273,7 +269,6 @@ class SensorServiceTest {
 
     @Test
     void deleteSensorById_shouldDeleteSensor_whenSensorExists() {
-
         // given
         final Long id = 1L;
         var foundSensor = new Sensor(id, "ESM-10 Danfoss");
@@ -293,7 +288,6 @@ class SensorServiceTest {
 
     @Test
     void deleteSensorById_shouldThrowSensorNotFoundException_whenSensorDoesNotExist() {
-
         // given
         final Long id = 1L;
         var emptyEntity = Optional.empty();
