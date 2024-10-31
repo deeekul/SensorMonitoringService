@@ -63,7 +63,7 @@ class SensorControllerTest {
 
         // when
         ResultActions response = mockMvc.perform(get("/api/sensors")
-                        .accept(MediaType.APPLICATION_JSON));
+                .accept(MediaType.APPLICATION_JSON));
         // then
         response.andExpect(status().isOk());
         response.andExpect(jsonPath("$").isArray());
@@ -89,7 +89,7 @@ class SensorControllerTest {
     void getSensorById_whenSensorDoesNotExist_thenStatusNotFound() throws Exception {
         // when
         ResultActions response = mockMvc.perform(get("/api/sensors/{id}", 50L)
-                        .accept(MediaType.APPLICATION_JSON));
+                .accept(MediaType.APPLICATION_JSON));
 
         // then
         response.andExpect(status().isNotFound());
@@ -103,8 +103,8 @@ class SensorControllerTest {
 
         // when
         ResultActions response = mockMvc.perform(post("/api/sensors/create")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonRequest));
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonRequest));
 
         // then
         response.andExpect(status().isCreated());
@@ -121,8 +121,8 @@ class SensorControllerTest {
 
         // when
         ResultActions response = mockMvc.perform(post("/api/sensors/create")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonRequest));
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonRequest));
 
         // then
         response.andExpect(status().isBadRequest());

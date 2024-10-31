@@ -23,7 +23,8 @@ import ru.vsu.cs.repository.SensorRepository;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
 
@@ -62,10 +63,18 @@ class MeasurementControllerTest {
 
         var measurements = List.of(
                 new Measurement(
-                        null, 10.0, true, null, sensor
+                        null,
+                        10.0,
+                        true,
+                        null,
+                        sensor
                 ),
                 new Measurement(
-                        null, -15.0, false, null, sensor
+                        null,
+                        -15.0,
+                        false,
+                        null,
+                        sensor
                 )
         );
         measurementRepository.saveAll(measurements);
@@ -136,7 +145,8 @@ class MeasurementControllerTest {
                 10.0,
                 true,
                 null,
-                savedSensor);
+                savedSensor
+        );
         var savedMeasurement = measurementRepository.save(measurement);
 
         // when
@@ -172,7 +182,8 @@ class MeasurementControllerTest {
         var measurementRequest = new MeasurementRequest(
                 12.5,
                 true,
-                new SensorRequest(sensor.getName()));
+                new SensorRequest(sensor.getName())
+        );
         String jsonRequest = objectMapper.writeValueAsString(measurementRequest);
 
         // when
@@ -196,7 +207,8 @@ class MeasurementControllerTest {
         var measurementRequest = new MeasurementRequest(
                 10.0,
                 true,
-                new SensorRequest("Non existing sensor"));
+                new SensorRequest("Non existing sensor")
+        );
         String jsonRequest = objectMapper.writeValueAsString(measurementRequest);
 
         // when
